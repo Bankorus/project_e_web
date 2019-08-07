@@ -1,0 +1,251 @@
+<div class="wrap-1">
+  <div class="container-1">
+    <a class="back" (click)="toReservation()">
+      <span class="back-icon"></span>
+      <span>BACK</span>
+    </a>
+    <h1>Required Preparation</h1>
+    <p class="note">To ensure that you can successfully issue your security token, we have compiled a list of the required documents below. Please review whether your business has the needed qualifications and documents.</p>
+    <p class="document">Documents to be prepared:</p>
+
+    <div class="item">
+      <p class="question">
+        <span>1. </span>
+        <span>Does your business have a brief presentation regarding your business and an outline for the token offering idea?</span>
+      </p>
+      <nz-radio-group [(ngModel)]="presentation" name="presentation" nzName="presentation" class="radio-container radio-left" (ngModelChange)="validateBrief()">
+        <label nz-radio nzValue="0">Yes</label>
+        <div class="upload-container" *ngIf="isShow">
+          <div class="upload-file-container">
+            <input type="file" class="fileUpload" (change)="handleUpload($event, 'BRIEF')" accept=".png, .jpg, .pdf" [disabled]="isBrief">
+            <div class="upload-btn">
+              <i nz-icon class="uploadIcon"></i>
+              <div class="upload-inner">
+                <p class="inner-1">Select files to upload</p>
+                <p class="inner-2">Size limited to 5MB</p>
+                <p class="inner-3">File format: .pdf, .png, .jpg</p>
+              </div>
+            </div>
+          </div>
+          <div class="image-list" >
+            <p *ngFor="let item of briefBackList">
+              <span class="link"></span>
+              <span class="fileUrl">{{ item.file_name }}</span>
+              <span class="delete" (click)="remove(item.id, 'BRIEF')"></span>
+              <span class="download" (click)="downloadFile(item.id, item.file_name)"></span>
+            </p>
+            <ng-template #indicatorTemplate >
+              <i nz-icon type="loading" style="font-size: 14px;"></i>
+            </ng-template>
+            <div *ngIf="isBriefLoading" class="file-loading">
+              <nz-spin [nzIndicator]="indicatorTemplate" ></nz-spin>
+              <span>{{fileName}}</span>
+            </div>
+          </div>
+          <div class="invalid-feedback">{{ briefError }}</div>
+        </div>
+        <label nz-radio nzValue="1">No</label>
+        <span class="issue" (click)="showNotification(template)" *ngIf="!isIssueActive"></span>
+        <span class="issueActive" (click)="closeNotification()" *ngIf="isIssueActive"></span>
+      </nz-radio-group>
+    </div>
+
+    <div class="item">
+      <p class="question">
+        <span>2. </span>
+        <span>If your fundraising target is a US domestic investor, please review the following disclosure requirements:</span>
+      </p>
+      <nz-radio-group [(ngModel)]="range" name="range" nzName="range" class="radio-left" (ngModelChange)="validateFile()">
+        <label nz-radio nzValue="1" class="label radio-title">Your raise amount is less than $2,000,000. You should provide:</label>
+        <p class="upload-note upload-top">1. Audited financial statements from the past two years  (if less than two years, at least an audited financial statement from the past 120 days is required);</p>
+        <p class="upload-note">2. Interim financial statements;</p>
+        <p class="upload-note">3. Financial statements of business carried out and to be carried out;</p>
+        <p class="upload-note">4. Statement of real estate operation;</p>
+        <p class="upload-note upload-bottom">5. Other financial information</p>
+        <p class="here">You can upload the documents here:</p>
+        <div class="upload-container">
+          <div class="upload-file-container">
+            <input type="file" class="fileUpload" (change)="handleUpload($event, 'RAISE_RANGE_1')" accept=".png, .jpg, .pdf" [disabled]="isRangeOne">
+            <div class="upload-btn">
+              <i nz-icon class="uploadIcon"></i>
+              <div class="upload-inner">
+                <p class="inner-1">Select files to upload</p>
+                <p class="inner-2">Size limited to 5MB</p>
+                <p class="inner-3">File format: .pdf, .png, .jpg</p>
+              </div>
+            </div>
+          </div>
+          <div class="image-list" >
+            <p *ngFor="let item of RaiseRange1List">
+              <span class="link"></span>
+              <span class="fileUrl">{{ item.file_name }}</span>
+              <span class="delete" (click)="remove(item.id, 'RAISE_RANGE_1')"></span>
+              <span class="download" (click)="downloadFile(item.id, item.file_name)"></span>
+            </p>
+            <ng-template #indicatorTemplate2 >
+              <i nz-icon type="loading" style="font-size: 14px;"></i>
+            </ng-template>
+            <div class="file-loading" *ngIf="isRaiseRange1Loading">
+              <nz-spin [nzIndicator]="indicatorTemplate2" ></nz-spin>
+              <span>{{fileName}}</span>
+            </div>
+          </div>
+          <div class="invalid-feedback">{{ RaiseRange1Error }}</div>
+        </div>
+        <label nz-radio nzValue="2" class="label">Your total issue price is higher than the $2,000,000 but less than $7,500,000, you should provide (Including but not limited to the prospectus):</label>
+        <p class="upload-note upload-top">* All the information under CFR §239.10, Form S-1 </p>
+        <p class="upload-note">1. Fund use</p>
+        <p class="upload-note">2. Issue price</p>
+        <p class="upload-note">3. Audited financial statements (at least an audited financial statement from the past 120 days, etc.)</p>
+        <p class="here">You can upload the documents here:</p>
+        <div class="upload-container">
+          <div class="upload-file-container">
+            <input type="file" class="fileUpload" (change)="handleUpload($event, 'RAISE_RANGE_2')" accept=".png, .jpg, .pdf" [disabled]="isRangeTwo">
+            <div class="upload-btn">
+              <i nz-icon class="uploadIcon"></i>
+              <div class="upload-inner">
+                <p class="inner-1">Select files to upload</p>
+                <p class="inner-2">Size limited to 5MB</p>
+                <p class="inner-3">File format: .pdf, .png, .jpg</p>
+              </div>
+            </div>
+          </div>
+          <div class="image-list" >
+            <p *ngFor="let item of RaiseRange2List">
+              <span class="link"></span>
+              <span class="fileUrl">{{ item.file_name }}</span>
+              <span class="delete" (click)="remove(item.id, 'RAISE_RANGE_2')"></span>
+              <span class="download" (click)="downloadFile(item.id, item.file_name)"></span>
+            </p>
+            <ng-template #indicatorTemplate3 >
+              <i nz-icon type="loading" style="font-size: 14px;"></i>
+            </ng-template>
+            <div class="file-loading" *ngIf="isRaiseRange2Loading">
+              <nz-spin [nzIndicator]="indicatorTemplate3" ></nz-spin>
+              <span>{{fileName}}</span>
+            </div>
+          </div>
+          <div class="invalid-feedback">{{ RaiseRange2Error }}</div>
+        </div>
+        <label nz-radio nzValue="3" class="label">If your total issue price is higher than $7,500,000,  it is the same as the disclosure requirements for non-exempt registered issues stipulated in the 1933 securities law of the United States.</label>
+        <p class="here">You can upload the documents here:</p>
+        <div class="upload-container upload-bottom">
+          <div class="upload-file-container">
+            <input type="file" class="fileUpload" (change)="handleUpload($event, 'RAISE_RANGE_3')" accept=".png, .jpg, .pdf" [disabled]="isRangeThree">
+            <div class="upload-btn">
+              <i nz-icon class="uploadIcon"></i>
+              <div class="upload-inner">
+                <p class="inner-1">Select files to upload</p>
+                <p class="inner-2">Size limited to 5MB</p>
+                <p class="inner-3">File format: .pdf, .png, .jpg</p>
+              </div>
+            </div>
+          </div>
+          <div class="image-list" >
+            <p *ngFor="let item of RaiseRange3List">
+              <span class="link"></span>
+              <span class="fileUrl">{{ item.file_name }}</span>
+              <span class="delete" (click)="remove(item.id, 'RAISE_RANGE_3')"></span>
+              <span class="download" (click)="downloadFile(item.id, item.file_name)"></span>
+            </p>
+            <ng-template #indicatorTemplate4 >
+              <i nz-icon type="loading" style="font-size: 14px;"></i>
+            </ng-template>
+            <div class="file-loading" *ngIf="isRaiseRange3Loading">
+              <nz-spin [nzIndicator]="indicatorTemplate4" ></nz-spin>
+              <span>{{fileName}}</span>
+            </div>
+          </div>
+          <div class="invalid-feedback">{{ RaiseRange3Error }}</div>
+        </div>
+      </nz-radio-group>
+    </div>
+
+    <div class="item">
+      <p class="question">
+        <span>3. </span>
+        <span>Any additional relevant information regarding your business, please upload or type here:</span>
+      </p>
+      <div class="upload-container upload-container-3">
+        <div class="upload-file-container">
+          <input type="file" class="fileUpload" (change)="handleUpload($event, 'EXTRA_INFO')" accept=".png, .jpg, .pdf">
+          <div class="upload-btn">
+            <i nz-icon class="uploadIcon"></i>
+            <div class="upload-inner">
+                <p class="inner-1">Select files to upload</p>
+                <p class="inner-2">Size limited to 5MB</p>
+                <p class="inner-3">File format: .pdf, .png, .jpg</p>
+            </div>
+          </div>
+        </div>
+        <div class="image-list" >
+          <p *ngFor="let item of extraInfoList">
+            <span class="link"></span>
+            <span class="fileUrl">{{ item.file_name }}</span>
+            <span class="delete" (click)="remove(item.id, 'EXTRA_INFO')"></span>
+            <span class="download" (click)="downloadFile(item.id, item.file_name)"></span>
+          </p>
+          <ng-template #indicatorTemplate5 >
+            <i nz-icon type="loading" style="font-size: 14px;"></i>
+          </ng-template>
+          <div class="file-loading" *ngIf="isExtraInfoLoading">
+            <nz-spin [nzIndicator]="indicatorTemplate5" ></nz-spin>
+            <span>{{fileName}}</span>
+          </div>
+        </div>
+        <div class="invalid-feedback">{{ extraInfoError }}</div>
+      </div>
+    </div>
+
+    <nz-form-item>
+      <nz-form-control  >
+        <input nz-input [(ngModel)]="other" (keyup)="validateOther()" name="other" placeholder="Type here" class="input-other" type="text">
+        <!--<div class="invalid-feedback">-->
+          <!--{{ loginFormError.email }}-->
+        <!--</div>-->
+      </nz-form-control>
+    </nz-form-item>
+
+    <button nz-button class="login-form-button btn-common" [ngClass]="{'cannot' : notClickable}" [disabled]="submitDisabled" (click)="submit()">SUBMIT</button>
+  </div>
+
+  <nz-modal nzWrapClassName="vertical-center-modal" [nzMask]="false" [(nzVisible)]="isVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+    <div class="modal-container">
+      <p class="success" *ngIf="isSuccess"></p>
+      <p class="failed" *ngIf="isFailed"></p>
+      <p class="note-modal" *ngIf="isSuccess">Great, you've submitted your documents!</p>
+      <p class="note-modal" *ngIf="isFailed">Oops... an error occurred, please try again later.</p>
+    </div>
+  </nz-modal>
+
+  <nz-modal nzWrapClassName="vertical-center-modal" class="make-sure" [(nzVisible)]="isLeave" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+    <p class="sure"></p>
+    <p class="note sure-note">Are you sure you want to leave? The documents you’ve uploaded will not be saved.</p>
+    <p style="text-align: right;margin:0;">
+      <a href="javascript:;" class="close" (click)="closeSureModal()">GO BACK</a>
+      <a href="javascript:;" class="commonBtn" (click)="leaveNow()">LEAVE NOW</a>
+    </p>
+  </nz-modal>
+</div>
+
+
+<ng-template #template >
+  <div class="ant-notification-notice-content">
+    <div class="ant-notification-notice-with-icon">
+      <span class="issueActive2"></span>
+      <span class="removeNotification" (click)="removeBriefNotification()"></span>
+      <div class="ant-notification-notice-message">The presentation should include:</div>
+      <div class="ant-notification-notice-description presetation-description">
+        <p>/ Sufficient market value of assets wished to be collateralized</p>
+        <p>/ Business plan that describes a path to strong growth</p>
+        <p>/ An introduction to the project's innovation</p>
+        <p>/ A clearly defined market opportunity to raise revenue</p>
+        <p>/ Capital available for investing in the future growth of your project</p>
+        <p>/ Comprehensive risk management measures to ensure low risks</p>
+        <p>/ Feasibility study</p>
+        <p>You can also choose to have our E-platform service assist you in creating the presentation. The price is US$2,000.</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

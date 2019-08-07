@@ -1,0 +1,35 @@
+<div class="header-wrap">
+  <div class="header">
+    <p class="left">
+      <a routerLink="/" class="logo"><img src="assets/img/logo.png" width="200"/></a>
+      <a routerLink="/" class="erc">ERC-1404</a>
+      <!--<a routerLink="/" class="community">COMMUNITY</a>-->
+    </p>
+
+    <div class="right">
+      <a routerLink="/" class="tele"></a>
+      <a routerLink="/" class="facebook"></a>
+      <a routerLink="/" class="twitter"></a>
+      <a routerLink="/login" class="signin" *ngIf="!isLogin">SIGN IN</a>
+      <a href="javascript:;" class="user-name" *ngIf="isLogin" (click)="showMenu()" (mouseenter)="showMenu()">
+        <span class="name">{{name}}</span>
+        <span class="arrow" [ngClass]="{'transform': isTransform }"></span>
+      </a>
+      <div class="popup-menu" *ngIf="showPopupMenu" (mouseleave)="hideMenu()">
+        <ul>
+          <li (click)="toReservation()">
+            <a routerLink="/reservation" (click)="hideMenu()">
+              <span>MY TOKEN</span>
+              <span class="status" *ngIf="status">
+                <span class="ok"></span>
+                <span> reserved</span>
+              </span>
+            </a>
+          </li>
+          <li (click)="logOut()">LOG OUT</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

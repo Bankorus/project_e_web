@@ -1,0 +1,63 @@
+.footer-container{
+  height:80px;
+  //width:100%;
+  //max-width:1440px;
+  margin:0 auto;
+  background:#f7f7f7;
+  border-top:1px solid #979797;
+  box-shadow:0 1px 0 rgba(153,153,153,0.25);
+  .footer{
+    width:1024px;
+    display:flex;
+    font-size:16px;
+    //font-weight:bold;
+    height:80px;
+    line-height: 80px;
+    margin:0 auto;
+    a{
+      flex:0 1 auto;
+      color:#1332C3;
+      text-decoration: none;
+      margin-right:30px;
+    }
+    .left{
+      display: flex;
+      margin:0;
+      .concat{
+        //color:#666;
+        span{
+          color:#1332C3;
+        }
+      }
+      .concat:hover{
+        text-decoration: underline;
+      }
+    }
+    .right{
+      flex:1;
+      display: flex;
+      justify-content: flex-end;
+      margin:0;
+      .faq{
+        width:100px;
+        height:40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: #1332C3;
+        color:#fff;
+        font-size: 20px;
+        border-radius: 2px;
+        margin-top:20px;
+      }
+      .faq:hover{
+        opacity: 0.84;
+      }
+      .policy:hover{
+        text-decoration: underline;
+      }
+      .service:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}

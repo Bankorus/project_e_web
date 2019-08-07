@@ -1,0 +1,75 @@
+@import "../../global-style/variables";
+@import "../../global-style/mixins";
+
+@include wrap-1();
+@include modal();
+@include success-failed-modal();
+.wrap-1{
+  .container-1{
+    padding-top:60px;
+  }
+  h2{
+    font-size: 30px;
+    color:#000;
+    margin-bottom:25px;
+  }
+  p{
+    font-size: 16px;
+    line-height: 24px;
+    color:$text-color-gray;
+    margin-bottom:20px;
+  }
+  .divider{
+    background-color: #dfdfdf;
+    height:1px;
+    margin:25px 0 20px 0;
+  }
+  h3{
+    color:$black-title-color;
+    font-size: 24px;
+    margin-bottom:20px;
+  }
+  .steps{
+    padding-left:30px;
+    .step-1{
+      width:24px;
+      height:24px;
+      line-height: 20px;
+      //background-color: #E8ECFF;
+      color:#1332c3;
+      border:2px solid #1332c3;
+      font-size: 16px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right:20px;
+      text-align: center;
+    }
+    .step-2{
+      flex:0 1 32px;
+    }
+    .step-4{
+      flex:0 1 78px;
+    }
+    .guide{
+      width:200px;
+      height:128px;
+      margin:0 0 25px 40px;
+      display: block;
+    }
+    .fox{
+      width:46px;
+      height:40px;
+      margin:0 0 30px 40px;
+    }
+  }
+  .btn-common{
+    @include btn-common();
+    width:145px;
+    line-height: 40px;
+    margin:0 0 40px 46px;
+    display: inline-block;
+  }
+  .btn-common:hover{
+    opacity: 0.84;
+  }
+}

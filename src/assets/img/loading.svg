@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>loading</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="loading" fill="#1332C3">
+            <path d="M7.20038748,27.8152704 L8.13608148,26.2772797 C10.136057,27.4971718 12.4859513,28.2 15,28.2 C22.2901587,28.2 28.2,22.2901587 28.2,15 C28.2,7.7098413 22.2901587,1.8 15,1.8 C7.7098413,1.8 1.8,7.7098413 1.8,15 C1.8,17.4625061 2.47430518,19.7675198 3.64834396,21.7404696 L2.08893336,22.6403376 C0.761869776,20.4026199 0,17.7902821 0,15 C0,6.71572878 6.71572878,0 15,0 C23.2842712,0 30,6.71572878 30,15 C30,23.2842712 23.2842712,30 15,30 C12.1432501,30 9.47302302,29.2014006 7.20038748,27.8152704 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

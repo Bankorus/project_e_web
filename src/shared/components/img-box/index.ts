@@ -1,0 +1,1 @@
+export { ImgBoxModule } from './img-box.module';

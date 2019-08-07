@@ -1,0 +1,162 @@
+<div class="wrap-1">
+  <div class="container-1">
+    <h1>Start your tokenization journey!</h1>
+    <div class="demands-container">
+      <form nz-form [nzLayout]="'inline'" (submit)="submitForm()" [formGroup]="demandsForm">
+
+        <p><span>*</span>What is your legal name?</p>
+        <!--<nz-form-item style="margin-right:20px!important;">-->
+          <!--<nz-form-control>-->
+            <!--<input nz-input [ngModel]="fname" class="input-first" readonly>-->
+          <!--</nz-form-control>-->
+        <!--</nz-form-item>-->
+        <p class="legal-name"><span>{{ fname }}</span><span>{{ lname }}</span></p>
+        <!--<nz-form-item>-->
+          <!--<nz-form-control>-->
+            <!--<input nz-input [ngModel]="lname"  class="input-last" readonly>-->
+          <!--</nz-form-control>-->
+        <!--</nz-form-item>-->
+
+        <p><span>*</span>What is the best way to get in touch with you?</p>
+        <p class="touch">
+          <span>{{ email }}</span>
+          <span>{{ code }}</span>
+          <span>{{ phone }}</span>
+        </p>
+        <!--<nz-form-item style="margin-right:20px!important;">-->
+          <!--<nz-form-control>-->
+            <!--<input nz-input [ngModel]="email"  class="email" readonly>-->
+          <!--</nz-form-control>-->
+        <!--</nz-form-item>-->
+        <!--<nz-form-item class="code-item">-->
+          <!--<nz-form-control>-->
+            <!--<input nz-input [ngModel]="code"  class="code" readonly>-->
+          <!--</nz-form-control>-->
+        <!--</nz-form-item>-->
+        <!--<nz-form-item>-->
+          <!--<nz-form-control>-->
+            <!--<input nz-input [ngModel]="phone"  class="phone" readonly>-->
+          <!--</nz-form-control>-->
+        <!--</nz-form-item>-->
+
+        <p><span>*</span>What is the legal name of your business?</p>
+        <nz-form-item>
+          <nz-form-control>
+            <input (keyup)="companyValidate()" nz-input name="company" placeholder="Type here..." class="input-long" formControlName="company">
+            <div class="invalid-feedback">
+              {{ demandsFormError.company }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+
+        <p><span>*</span>In what jurisdiction are you incorporated?</p>
+        <div class="select-container">
+          <nz-select [(ngModel)]="jurisdiction" nzPlaceHolder="Choose one" name="jurisdiction" formControlName="jurisdiction" (nzOpenChange)="transform('jurisdiction')" (ngModelChange)="ValidateField('jurisdiction')">
+            <nz-option nzValue="USA" nzLabel="USA"></nz-option>
+            <nz-option nzValue="Europe" nzLabel="Europe"></nz-option>
+            <nz-option nzValue="Asia" nzLabel="Asia"></nz-option>
+            <nz-option nzValue="Australia" nzLabel="Australia"></nz-option>
+            <nz-option nzValue="Latin America" nzLabel="Latin America"></nz-option>
+            <nz-option nzValue="Africa" nzLabel="Africa"></nz-option>
+            <nz-option nzValue="Canada" nzLabel="Canada"></nz-option>
+            <nz-option nzValue="Not incorporated" nzLabel="Not incorporated"></nz-option>
+          </nz-select>
+          <span class="down-icon" [ngClass]="{'transform': isJurisdictionTransform }"></span>
+        </div>
+
+        <p><span>*</span>What best descibes your business?</p>
+        <div class="select-container">
+          <nz-select [(ngModel)]="business" nzPlaceHolder="Choose one" name="business" formControlName="business" (nzOpenChange)="transform('business')" (ngModelChange)="ValidateField('business')">
+            <nz-option nzValue="Startup" nzLabel="Startup"></nz-option>
+            <nz-option nzValue="Enterprise" nzLabel="Enterprise"></nz-option>
+            <nz-option nzValue="Financial(Fund/Bank/…)" nzLabel="Financial(Fund/Bank/…)"></nz-option>
+            <nz-option nzValue="Broker-dealer" nzLabel="Broker-dealer"></nz-option>
+            <nz-option nzValue="Accredited investor" nzLabel="Accredited investor"></nz-option>
+            <nz-option nzValue="Service provider" nzLabel="Service provider"></nz-option>
+            <nz-option nzValue="Other" nzLabel="Other"></nz-option>
+          </nz-select>
+          <span class="down-icon" [ngClass]="{'transform': isBusinessTransform }"></span>
+        </div>
+
+        <div style="position: relative;">
+          <p><span>*</span>Do you have a counsel?</p>
+          <nz-radio-group [(ngModel)]="counsel" name="counsel" nzName="counsel" class="radio-container" (keyup)="ValidateField('counsel')" (ngModelChange)="ValidateField('counsel');validateCounsel()" formControlName="counsel">
+            <label nz-radio [nzValue]="true" >Yes</label>
+            <label nz-radio [nzValue]="false" >No</label>
+          </nz-radio-group>
+          <nz-form-item>
+            <nz-form-control *ngIf="this.counsel == true">
+            <input nz-input type="text" placeholder="Type the name of the counsel here…" name="counselValue" class="input-counsel" formControlName="counselValue">
+          </nz-form-control>
+          </nz-form-item>
+        </div>
+
+        <p><span>*</span>How much would you like to raise? (USD)</p>
+        <div class="select-container">
+          <nz-select [(ngModel)]="raise" nzPlaceHolder="Choose one" name="raise" formControlName="raise" (nzOpenChange)="transform('raise')" (ngModelChange)="ValidateField('raise')">
+            <nz-option nzValue="＜$2,000,000" nzLabel="＜$2,000,000"></nz-option>
+            <nz-option nzValue="$2,000,000＜$5,000,000" nzLabel="$2,000,000＜$5,000,000"></nz-option>
+            <nz-option nzValue="$5000,000＜$7,500,000" nzLabel="$5000,000＜$7,500,000"></nz-option>
+            <nz-option nzValue="＞$7,500,000" nzLabel="＞$7,500,000"></nz-option>
+          </nz-select>
+          <span class="down-icon" [ngClass]="{'transform': isRaiseTransform }"></span>
+        </div>
+
+        <p><span>*</span>Have you already raised capital in other ways?</p>
+        <nz-radio-group [(ngModel)]="capital" name="capital" nzName="capital" formControlName="capital" (keyup)="ValidateField('capital')" (ngModelChange)="ValidateField('capital')">
+          <label nz-radio [nzValue]="true">Yes</label>
+          <label nz-radio [nzValue]="false">No</label>
+        </nz-radio-group>
+
+        <p><span>*</span>How soon would you like to create your token?</p>
+        <div class="select-container">
+          <nz-select [(ngModel)]="time" nzPlaceHolder="Choose one" name="time" formControlName="time" (nzOpenChange)="transform('time')" (ngModelChange)="ValidateField('time')">
+            <nz-option nzValue="1-3 months" nzLabel="1-3 months"></nz-option>
+            <nz-option nzValue="3-6 months" nzLabel="3-6 months"></nz-option>
+            <nz-option nzValue="6-9 months" nzLabel="6-9 months"></nz-option>
+            <nz-option nzValue="9-12 months" nzLabel="9-12 months"></nz-option>
+            <nz-option nzValue="＞12 months" nzLabel="＞12 months"></nz-option>
+          </nz-select>
+          <span class="down-icon" [ngClass]="{'transform': isTimeTransform }"></span>
+        </div>
+
+        <p><span>*</span>Where would you like to raise your money?</p>
+        <div class="select-container">
+          <nz-select [(ngModel)]="where" nzPlaceHolder="Choose one" name="where" formControlName="where" (nzOpenChange)="transform('where')" (ngModelChange)="ValidateField('where')">
+            <nz-option nzValue="Only in the US" nzLabel="Only in the US"></nz-option>
+            <nz-option nzValue="Globally" nzLabel="Globally"></nz-option>
+            <nz-option nzValue="Other" nzLabel="Other"></nz-option>
+          </nz-select>
+          <span class="down-icon" [ngClass]="{'transform': isWhereTransform }"></span>
+        </div>
+
+        <p><span>*</span>What is your budget for the STO? (USD)</p>
+        <div class="select-container">
+          <nz-select [(ngModel)]="budget" nzPlaceHolder="Choose one" name="budget" formControlName="budget" (nzOpenChange)="transform('budget')" (ngModelChange)="ValidateField('budget')">
+            <nz-option nzValue="＜$50,000" nzLabel="＜$50,000"></nz-option>
+            <nz-option nzValue="$50,000＜$200,000" nzLabel="$50,000＜$200,000"></nz-option>
+            <nz-option nzValue="$200,000＜$500,000" nzLabel="$200,000＜$500,000"></nz-option>
+            <nz-option nzValue="＞$500,000" nzLabel="＞$500,000"></nz-option>
+          </nz-select>
+          <span class="down-icon" [ngClass]="{'transform': isBudgetTransform }"></span>
+        </div>
+
+        <br>
+        <button nz-button class="login-form-button btn-common" [ngClass]="{'cannot' : notClickable}" [disabled]="submitDisabled">SUBMIT</button>
+        <p class="warning">Once you've submitted a reservation, we will get in touch with you.</p>
+      </form>
+    </div>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" [(nzVisible)]="isVisible" [nzMask]="false" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <div class="modal-container">
+        <p class="success" *ngIf="isSuccess"></p>
+        <p class="failed" *ngIf="!isSuccess"></p>
+        <p class="note-modal" *ngIf="isSuccess">Thank you! Your form has been successfully submitted!</p>
+        <p class="note-modal" *ngIf="!isSuccess">Oops… Something went wrong. Please try again later.</p>
+      </div>
+    </nz-modal>
+
+  </div>
+</div>
+
+

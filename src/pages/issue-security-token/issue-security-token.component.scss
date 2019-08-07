@@ -1,0 +1,316 @@
+@import "../../global-style/variables";
+@import "../../global-style/mixins";
+
+@include wrap-1();
+@include modal();
+@include success-failed-modal();
+.wrap-1{
+  .container-1{
+    width:640px;
+  }
+  input:focus{
+    border-right:0!important;
+    border-bottom-color:#1332C3;
+  }
+  input:hover{
+    border-right:0!important;
+  }
+  .progress{
+    @include progress1();
+    margin:0;
+  }
+  .progress-note{
+    margin:10px 0 0 2px;
+    font-weight:500;
+    span{
+      font-size: 16px;
+    }
+    span:first-child{
+      margin-right:168px;
+      color:$link-color;
+    }
+    span:last-child{
+      margin-right:168px;
+      color:$text-color-gray;
+    }
+  }
+  h1{
+    margin:30px 0 50px 0!important;
+  }
+  .question{
+    color:$question-text-color;
+    font-size: 16px;
+    height:20px;
+    line-height: 20px;
+    margin:30px 0 0 0;
+    display: flex;
+    font-weight:500;
+    .required{
+      //@include required();
+      display: inline-block;
+      margin-top:3px;
+      margin-right:6px;
+    }
+    .issue{
+      @include issue();
+      position: relative;
+      top:2px;
+      left:8px;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .issueActive{
+      @include issueActive();
+      margin-left:10px;
+      display: inline-block;
+      cursor: pointer;
+    }
+  }
+  .symbol, .name, .regulation{
+    @include input-long();
+  }
+  .start, .end{
+    @include input-short();
+  }
+  .date-container{
+    display: flex;
+    .start-date ,.end-date{
+      flex:0 1 310px;
+    }
+    .start-date{
+      margin-right:18px;
+    }
+    .start{
+      @include datepicker();
+    }
+    .end{
+      @include input-short();
+    }
+  }
+  .raise-amount{
+    display: flex;
+    .raise-container ,.amount-container{
+      flex:0 1 310px;
+      position: relative;
+    }
+    .raise-container{
+      margin-right:18px;
+    }
+    .amount{
+      @include input-short();
+      color:#1a1a1a;
+    }
+    nz-dropdown{
+      font-size: 16px;
+      @include dropdown-short();
+      a{
+        color:$input-placeholder-color;
+      }
+      .anticon.anticon-down{
+        color:$question-text-color;
+        float:right;
+        margin-top:16px;
+        font-size: 14px;
+      }
+    }
+    .coin{
+      position: absolute;
+      right:0;
+      top:65px;
+      color:$black-title-color;
+    }
+  }
+  .cap{
+    @include input-long();
+  }
+  .token-container{
+    position: relative;
+    .token{
+      position: absolute;
+      right:0;
+      top:0;
+      font-size: 16px;
+      line-height: 20px;
+      color:$placeholder-color;
+      font-family: "DIN", Helvetica, Arial, serif;
+    }
+  }
+  .terms{
+    font-size: 16px;
+    color:$text-color-gray;
+    font-weight:400;
+    margin-top:36px;
+    .agree{
+      color:$agree-text-color;
+    }
+    span{
+
+    }
+    a{
+      color:$link-color;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+  }
+  .btn-common{
+    @include btn-common();
+    margin-top:20px;
+  }
+}
+.warning{
+  @include warning();
+  margin-bottom:10px;
+}
+.note{
+  color:$modal-text;
+  font-size: 28px;
+  line-height: 30px;
+  margin-bottom:5px;
+  font-weight: 500;
+}
+.explain{
+  font-size:16px;
+  line-height: 18px;
+  color:$text-color-gray;
+  margin:0;
+}
+.infomation{
+  height:226px;
+  background: rgba(153,170,240,0.19);
+  margin:10px 0 35px 0;
+  padding:20px;
+  .title{
+    font-size:16px;
+    line-height: 18px;
+    color:$text-color-gray;
+    margin-bottom:20px;
+  }
+  .amount{
+    font-size: 14px;
+    line-height: 20px;
+    color:$text-color-gray;
+    margin:0;
+  }
+  .amount-number{
+    font-size: 14px;
+    line-height: 20px;
+    color:#1a1a1a;
+    margin-bottom:15px;
+    font-weight: 500;
+  }
+}
+.close{
+  text-decoration: none;
+  color:$warning-color;
+  font-size: 20px;
+  margin-bottom:40px;
+}
+.launchBtn{
+  text-decoration: none;
+  color:$link-color;
+  font-size: 20px;
+  margin-bottom:40px;
+  margin-left:40px;
+}
+.issue{
+  @include issue();
+  display: inline-block;
+}
+.issueActive{
+  @include issueActive();
+  display: inline-block;
+}
+.invalid-feedback {
+  @include form-invalid-feedback();
+}
+.cannot{
+  opacity: 0.4;
+}
+.token-symbol-description{
+  margin-bottom: 20px;
+}
+.token-symbol-message{
+  ul{
+    padding-left:0;
+    margin-bottom:0;
+    li{
+      list-style: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    li:first-child{
+      margin-right:16px;
+    }
+    li.active{
+      border-bottom:2px solid #1332C3;
+    }
+  }
+}
+.token-symbol-description-regD{
+  p{
+    margin:0;
+  }
+  .internal{
+    margin-bottom:10px;
+  }
+  a{
+    color:$link-color;
+    margin-top:28px;
+    display: inline-block;
+  }
+  a:hover{
+    text-decoration: underline;
+  }
+}
+.token-symbol-description-rule{
+  ul{
+    padding-left:0;
+    margin-bottom:10px;
+    li{
+      list-style: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+    li:first-child{
+      margin-right:16px;
+    }
+    li:nth-child(2){
+      margin-right:16px;
+    }
+    li.active{
+      color:#1332C3;
+    }
+  }
+}
+.regD504, .regD506b{
+  a{
+    margin-top:18px;
+  }
+}
+.regD506c{
+  a{
+    margin-top:100px;
+  }
+}
+.removeNotification{
+  @include removeNotification();
+  display: inline-block;
+  position: absolute;
+  top:10px;
+  right:16px;
+  cursor: pointer;
+}
+.select-container{
+  position: relative;
+}
+.down-icon{
+  @include down();
+  display: inline-block;
+  position: absolute;
+  top:17px;
+  right:10px;
+}
+.transform{
+  transform: rotate(180deg);
+}

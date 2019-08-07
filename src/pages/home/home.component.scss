@@ -1,0 +1,326 @@
+@import "../../global-style/variables";
+@import "../../global-style/mixins";
+
+.wrap-1{
+  width:100%;
+  max-width: 100%;
+}
+.banner{
+  //background: url("../../assets/img/banner.png") center center no-repeat;
+  background-image: url("../../assets/img/background.png");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  width:100%;
+  height:900px;
+  position: relative;
+  margin-top:-100px;
+  h1{
+    font-size: 68px;
+    line-height: 82px;
+    color:#fff;
+    position: absolute;
+    top:268px;
+    left:50%;
+    margin-left:-550px;
+  }
+  p{
+    font-size: 24px;
+    color:#fff;
+    position: absolute;
+    top:370px;
+    left:50%;
+    margin-left:-360px;
+  }
+  .btn-group{
+    width:292px;
+    position: absolute;
+    top:434px;
+    left:50%;
+    margin-left:-146px;
+    .start{
+      display: inline-block;
+      width:180px;
+      height:60px!important;
+      line-height: 60px;
+      text-align: center;
+      background-color: $background-color-primary!important;
+      color:#fff!important;
+      font-size: 20px;
+      font-weight: 400;
+      border-radius: 2px;
+      margin:30px 0 20px 0;
+    }
+    .start:hover{
+      opacity: 0.84;
+    }
+    .faq{
+      display: inline-block;
+      float:right;
+      width:100px;
+      height:60px;
+      line-height: 60px;
+      text-align: center;
+      background-color: #1a1a1a;
+      color:#fff;
+      font-size: 20px;
+      font-weight: 400;
+      border-radius: 2px;
+      margin:30px 0 20px 0;
+    }
+    .faq:hover{
+      opacity: 0.84;
+    }
+  }
+}
+.assets{
+  background-color: #F8F8F8;
+  padding:80px 0 100px 0;
+  h1{
+    font-size: 40px;
+    line-height: 52px;
+    text-align: center;
+    color:#000;
+    margin:0 0 60px 0;
+  }
+  .assets-inner{
+    display: flex;
+    width:1024px;
+    margin:0 auto;
+    .left{
+      width:500px;
+      height:460px;
+      padding:54px 40px 73px 40px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow:-1px 4px 8px rgba(0, 0, 0, 0.08);
+      .assets-1{
+        @include assets-1();
+        margin:0 auto;
+      }
+      .title{
+        margin:25px 0 18px 0;
+        font-size: 22px;
+        font-weight:500;
+        color:$black-title-color;
+        text-align: center;
+      }
+      .assets-note{
+        width:420px;
+        font-size: 16px;
+        color:$text-color-gray;
+        text-align: center;
+        margin:0;
+      }
+    }
+    .left:hover{
+      box-shadow:-1px 4px 35px rgba(114, 114, 114, 0.09);
+    }
+    .right{
+      width:500px;
+      height:460px;
+      padding:54px 40px 47px 40px;
+      background-color: #fff;
+      margin-left:24px;
+      border-radius: 4px;
+      box-shadow:-1px 4px 8px rgba(0, 0, 0, 0.08);
+      .assets-2{
+        @include assets-2();
+        margin:0 auto;
+      }
+      .title{
+        margin:25px 0 18px 0;
+        font-size: 22px;
+        color:$black-title-color;
+        text-align: center;
+        font-weight:500;
+      }
+      .assets-note{
+        width:420px;
+        font-size: 16px;
+        color:$text-color-gray;
+        text-align: center;
+        margin:0;
+      }
+    }
+    .right:hover{
+      box-shadow:-1px 4px 35px rgba(114, 114, 114, 0.09);
+    }
+  }
+}
+.markets{
+  padding:80px 0 100px 0;
+  h1{
+    font-size: 40px;
+    line-height: 52px;
+    text-align: center;
+    color:#000;
+    margin:0 0 60px 0;
+  }
+  .markets-inner{
+    display: flex;
+    width:1024px;
+    margin:0 auto;
+    .left{
+      width:323px;
+      height:353px;
+      .img-1{
+        @include img-1();
+      }
+      .markets-title{
+        font-size: 20px;
+        color:$black-title-color;
+        margin:20px 0 10px 0;
+        font-weight:500;
+      }
+      .markets-note{
+        font-size: 16px;
+        line-height: 24px;
+        color:$text-color-gray;
+        margin-bottom: 16px;
+      }
+      a{
+        text-decoration: none;
+        font-size: 16px;
+        color:$link-color;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+    }
+    .center{
+      width:323px;
+      height:353px;
+      margin-left:28px;
+      .img-2{
+        @include img-2();
+      }
+      .markets-title{
+        font-size: 20px;
+        color:$black-title-color;
+        margin:20px 0 10px 0;
+        font-weight:500;
+      }
+      .markets-note{
+        font-size: 16px;
+        line-height: 24px;
+        color:$text-color-gray;
+      }
+      a{
+        text-decoration: none;
+        font-size: 16px;
+        color:$link-color;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+    }
+    .right{
+      width:323px;
+      height:353px;
+      margin-left:28px;
+      .img-3{
+        @include img-3();
+      }
+      .markets-title{
+        font-size: 20px;
+        color:$black-title-color;
+        margin:20px 0 10px 0;
+        font-weight:500;
+      }
+      .markets-note{
+        font-size: 16px;
+        line-height: 24px;
+        color:$text-color-gray;
+      }
+      a{
+        text-decoration: none;
+        font-size: 16px;
+        color:$link-color;
+      }
+      a:hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.cooperate{
+  padding:80px 0 100px 0;
+  background-color: #F8F8F8;
+  h1{
+    font-size: 40px;
+    line-height: 52px;
+    text-align: center;
+    color:#000;
+    margin:0 0 60px 0;
+  }
+  .cooperate-inner{
+    width:900px;
+    margin:0 auto;
+  }
+  .partner{
+    margin-bottom:0;
+    display: inline-block;
+  }
+  .left{
+    margin-left:100px;
+  }
+  .top{
+    margin-bottom:48px;
+    .left1{
+      margin-left:20px;
+    }
+    .partner1{
+      @include partner1();
+      flex:0 1 175px;
+    }
+    .partner2{
+      @include partner2();
+      flex:0 1 153px;
+    }
+    .partner3{
+      @include partner3();
+      flex:0 1 153px;
+    }
+    .partner4{
+      @include partner4();
+      flex:0 1 85px;
+    }
+  }
+  .middle{
+    margin-bottom:46px;
+    .partner5{
+      @include partner5();
+      flex:0 1 165px;
+    }
+    .partner6{
+      @include partner6();
+      flex:0 1 70px;
+    }
+    .partner7{
+      @include partner7();
+      flex:0 1 123px;
+    }
+    .partner8{
+      @include partner8();
+      flex:0 1 232px;
+    }
+  }
+  .bottom{
+    .left2{
+      margin-left:90px;
+    }
+    .partner9{
+      @include partner9();
+      flex:0 1 162px;
+    }
+    .partner10{
+      @include partner10();
+      flex:0 1 116px;
+    }
+    .partner11{
+      @include partner11();
+      flex:0 1 206px;
+    }
+  }
+}

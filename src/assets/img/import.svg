@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400px" height="72px" viewBox="0 0 400 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="400" height="72" rx="2"></rect>
+    </defs>
+    <g id="key-flow-1218" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5-2" transform="translate(-128.000000, -923.000000)">
+            <g id="Group-8-Copy-5" transform="translate(88.000000, 688.000000)">
+                <g id="Group" transform="translate(40.000000, 191.000000)">
+                    <g id="Group-5-Copy" transform="translate(0.000000, 44.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Rectangle-5-Copy-3">
+                            <use fill="#FFFFFF" xlink:href="#path-1"></use>
+                            <rect stroke-opacity="0.666326993" stroke="#CCCCCC" stroke-width="1" stroke-linejoin="square" fill="#ECECEC" x="0.5" y="0.5" width="399" height="71" rx="2"></rect>
+                        </g>
+                        <rect id="矩形" stroke="#DBDADA" fill-rule="nonzero" mask="url(#mask-2)" x="16.5" y="33.5" width="367" height="1"></rect>
+                        <g id="Group-4" mask="url(#mask-2)" font-family="DIN-Medium, DIN" font-size="12" font-weight="400" line-spacing="20">
+                            <g transform="translate(20.000000, 9.000000)">
+                                <text id="No.">
+                                    <tspan x="1.778" y="12" fill="#999999">No.</tspan>
+                                </text>
+                                <text id="U.S">
+                                    <tspan x="48" y="12" fill="#999999">U.S</tspan>
+                                </text>
+                                <text id="Adress">
+                                    <tspan x="98" y="12" fill="#999999">Adress</tspan>
+                                </text>
+                            </g>
+                        </g>
+                        <g id="Group-4-Copy" mask="url(#mask-2)" font-family="DIN-Medium, DIN" font-size="14" font-weight="400" line-spacing="20">
+                            <g transform="translate(17.000000, 41.000000)">
+                                <text id="1">
+                                    <tspan x="7.269" y="14" fill="#999999">1</tspan>
+                                </text>
+                                <text id="Yes">
+                                    <tspan x="50" y="14" fill="#999999">Yes</tspan>
+                                </text>
+                                <text id="OxjdoqpcKADscnkajdnc">
+                                    <tspan x="101" y="14" fill="#999999">OxjdoqpcKADscnkajdncbjkabxlui829mncDh</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

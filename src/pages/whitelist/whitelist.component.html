@@ -1,0 +1,218 @@
+<div class="wrap-1">
+  <div class="container-1">
+    <div class="left">
+      <p class="progress"></p>
+      <p class="progress-note"><span>Issue Security Token</span><span>Whitelist Investors</span></p>
+      <h1>Whitelist New Investors</h1>
+      <!--<p class="desc">Description: please…</p>-->
+      <div class="transfer">
+        <p>Transfer tokens to a specified address</p>
+        <nz-input-group nzSearch nzSize="large" [nzSuffix]="suffixButton">
+          <input type="text" nz-input placeholder="Address" class="input-address" [(ngModel)]="address" name="address">
+        </nz-input-group>
+        <ng-template #suffixButton>
+          <button nz-button nzSize="large" nzSearch (click)="transferUp()">TRANSFER</button>
+        </ng-template>
+        <div class="invalid-feedback" style="top:106px;left:20px;">
+          {{ error }}
+        </div>
+      </div>
+
+      <button type="button" nz-button class="login-form-button btn-common add-new" (click)="addNew()"><span class="add"></span>ADD NEW</button>
+      <button type="button" nz-button class="login-form-button btn-common" (click)="importList()"><span class="add"></span>IMPORT</button>
+
+      <nz-table #basicTable
+                [nzData]="dataSet" *ngIf="hasData" [nzTotal]="total" [nzPageSize]="10" [nzFrontPagination]="false"
+                (nzPageIndexChange)="pagination($event)">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>U.S</th>
+            <th>Address</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of basicTable.data">
+            <td>{{item.status}}</td>
+            <td>{{item.isUsaUser === true ? 'Yes' : 'No'}}</td>
+            <td>
+              <a href="javascript:;">{{item.address}}</a>
+            </td>
+            <td>
+              <a href="javascript:;" (click)="transferDown(item.address)">TRANSFER</a>
+            </td>
+          </tr>
+        </tbody>
+        <!--<nz-pagination [nzPageIndex]="1" [nzTotal]="50"></nz-pagination>-->
+      </nz-table>
+
+      <div class="nodata-container" *ngIf="!hasData">
+        <p class="thead"><span>Status</span><span>U.S</span><span>Address</span></p>
+        <p class="nodata"></p>
+        <p class="nodata-note">No Data</p>
+      </div>
+
+    </div>
+
+    <div class="right" >
+      <div class="capped">
+        <p class="title">Capped STO <span>Raise in {{raise_in}}</span></p>
+        <p class="name">Token amount</p>
+        <p class="number">{{hard_cap}}</p>
+        <p class="name">Regulation</p>
+        <p class="number">{{regulation}}</p>
+        <p class="name">Lock up period</p>
+        <p class="for">For U.S investors</p>
+        <p class="number number2">{{ for_usa }}</p>
+        <!--<p class="number number2">{{start_date}} - {{usEndDate}}</p>-->
+        <p class="for">For others</p>
+        <p class="number">{{ for_others }}</p>
+        <!--<p class="number">{{start_date}} - {{otherEndDate}}</p>-->
+        <p class="name">STO ETH address</p>
+        <p class="number"><a href="javascript:;">{{tokenAddress}}</a></p>
+        <p class="name">Token symbol</p>
+        <p class="number">{{symbol}}</p>
+        <p class="name">Token name</p>
+        <p class="number">{{ name }}</p>
+      </div>
+    </div>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" [nzMask]="false" [(nzVisible)]="isVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <div class="modal-container">
+        <p class="success" *ngIf="isSuccess"></p>
+        <p class="success" *ngIf="isTransferSuccess"></p>
+        <p class="failed" *ngIf="isFailed"></p>
+        <p class="loading" *ngIf="isLoading"></p>
+        <p class="loading" *ngIf="isTransferLoading"></p>
+        <p class="note-modal" *ngIf="isSuccess">STO Details Configured Successfully</p>
+        <p class="note-modal" *ngIf="isTransferSuccess">Transfer Succesful</p>
+        <p class="note-modal" *ngIf="isFailed">{{failedError}}</p>
+        <p class="note-modal" *ngIf="isLoading">Please do not leave the current page, you may need to wait for a few minutes...</p>
+        <p class="note-modal" *ngIf="isTransferLoading">Transaction processing…</p>
+      </div>
+    </nz-modal>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" class="add-container" [(nzVisible)]="isAddVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <h2>Add New Investor</h2>
+      <p>You can add a new investor by entering the information below</p>
+      <p class="wallet"><span class="star">*</span>Wallet Address</p>
+      <!--<p class="wallet-address"></p>-->
+      <nz-form-item>
+        <nz-form-control>
+          <input type="text" nz-input class="add-address" placeholder="input investor’s address" [(ngModel)]="add" name="add" (keyup)="validateAdd()">
+          <div class="invalid-feedback">
+            {{ addAddressError }}
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+      <p class="wallet country"><span class="start">*</span>Does the address belong to a qualified investor in the United States?</p>
+      <nz-radio-group [(ngModel)]="country" name="country" nzName="country" class="radio-container" (ngModelChange)="validateRadio()">
+        <label nz-radio [nzValue]="true">Yes</label>
+        <label nz-radio [nzValue]="false">No</label>
+      </nz-radio-group>
+      <div class="invalid-feedback radio-feedback">
+        {{ countryError }}
+      </div>
+      <p class="padding"></p>
+      <p class="reminder">
+        Reminder: Investors must be approved before they are eligible to be added to the whitelist
+        <!--<span class="issue" (click)="showNotification(template)" *ngIf="!isIssueActive"></span>-->
+        <!--<span class="issueActive" (click)="closeNotification()" *ngIf="isIssueActive"></span>-->
+      </p>
+      <p style="text-align: right;margin:0;">
+        <a href="javascript:;" class="close" (click)="closeAddModal()">CLOSE</a>
+        <a href="javascript:;" class="commonBtn" (click)="addInvestor()">ADD INVESTOR</a>
+      </p>
+    </nz-modal>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" class="import-container" [(nzVisible)]="isImportVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <h2>Import New Investor</h2>
+      <p class="upload">You can add investors by uploading a CSV file.</p>
+      <div class="upload-container">
+        <div class="upload-file-container">
+          <input [(ngModel)]="csv" type="file" class="fileUpload" (change)="handleUpload($event)" accept=".csv" [disabled]="isImport">
+          <div class="upload-btn">
+            <i nz-icon class="uploadIcon"></i>
+            <div class="upload-inner">
+              <p class="inner-1">Select a CSV file to upload - size limited to 10MB</p>
+            </div>
+          </div>
+        </div>
+        <div class="image-list" >
+          <p *ngFor="let item of importListArray">
+            <span class="link"></span>
+            <span class="fileUrl">{{ item }}</span>
+          </p>
+        </div>
+        <div class="invalid-feedback" style="top:54px;">{{ importError }}</div>
+      </div>
+      <p class="reminder2 small">Reminder:</p>
+      <p class="small">1. The format shoud be as follows:</p>
+      <p class="address-pre"></p>
+      <p class="small note1">2. You can upload a list of no more than 50 investors at a time.</p>
+      <p class="small note2">
+        3. Investors must be approved before they are eligible to be added to the whitelist.
+        <!--<span class="issue" (click)="showNotification(template)" *ngIf="!isIssueActive"></span>-->
+        <!--<span class="issueActive" (click)="closeNotification()" *ngIf="isIssueActive"></span>-->
+      </p>
+      <p style="text-align: right;margin:0;">
+        <a href="javascript:;" class="close" (click)="closeImportModal()">CLOSE</a>
+        <a href="javascript:;" class="commonBtn" (click)="importInvestor()">ADD INVESTOR</a>
+      </p>
+    </nz-modal>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" class="make-sure" [(nzVisible)]="isSureVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <p class="sure"></p>
+      <p class="note sure-note">Make sure that the investors in your whitelist are approved before they are added.</p>
+      <p style="text-align: right;margin:0;">
+        <a href="javascript:;" class="close" (click)="closeSureModal()">CLOSE</a>
+        <a href="javascript:;" class="commonBtn" (click)="addToBlock()">ADD INVESTOR</a>
+      </p>
+    </nz-modal>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" class="make-sure" [(nzVisible)]="isSureImportVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <p class="sure"></p>
+      <p class="note sure-note">Make sure that the investors in your whitelist are approved before they are added.</p>
+      <p style="text-align: right;margin:0;">
+        <a href="javascript:;" class="close" (click)="closeSureModal()">CLOSE</a>
+        <a href="javascript:;" class="commonBtn" (click)="importToBlock()">ADD INVESTOR</a>
+      </p>
+    </nz-modal>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" class="transfer-container" [(nzVisible)]="isTransferVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <h2>Transfer</h2>
+      <p class="wallet"><span class="star">*</span>Wallet Address</p>
+      <p class="wallet-address">{{ address }}</p>
+      <p class="wallet"><span class="star">*</span>Amount</p>
+      <input type="text" nz-input placeholder="Amount" class="input-amount" [(ngModel)]="amount" name="amount" (keyup)="amountValidate()">
+      <div class="invalid-feedback" style="top:218px;left:30px;">
+        {{ amountError }}
+      </div>
+      <p class="small note2">
+        Reminder: Investors must be approved before they are added to the whitelist.
+        <!--<span class="issue" (click)="showNotification(template)" *ngIf="!isIssueActive"></span>-->
+        <!--<span class="issueActive" (click)="closeNotification()" *ngIf="isIssueActive"></span>-->
+      </p>
+      <p style="text-align: right;margin:0;">
+        <a href="javascript:;" class="close" (click)="closeTransferModal()">CLOSE</a>
+        <a href="javascript:;" class="commonBtn" (click)="clickTransfer()">TRANSFER</a>
+      </p>
+    </nz-modal>
+  </div>
+</div>
+<ng-template #template >
+  <div class="ant-notification-notice-content">
+    <div class="ant-notification-notice-with-icon">
+      <span class="issueActive2"></span>
+      <span class="removeNotification" (click)="removeBriefNotification()"></span>
+      <div class="ant-notification-notice-message">An accredited investor should have the following:</div>
+      <div class="ant-notification-notice-description presetation-description">
+        <p>Net worth exceeds $1,000,000 (Not including primary residence); or</p>
+        <p>Income exceeds $200,000 (for the past two years); or</p>
+        <p>Joint income with a spouse exceeds $300,000 (for the past two years)</p>
+      </div>
+    </div>
+  </div>
+</ng-template>
+

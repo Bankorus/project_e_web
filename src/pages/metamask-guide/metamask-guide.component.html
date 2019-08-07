@@ -1,0 +1,40 @@
+<div class="wrap-1">
+  <div class="container-1">
+    <h2>MetaMask</h2>
+    <p>Bankorus facilitates the ownership and transfer of tokens using the Ethereum blockchain. This means that when a trade settles, the tokens are transferred directly to the buyer's Ethereum address. Bankorus will not have access to these tokens, only the address owner will have access to them. MetaMask is a tool that gives users an easy way to interact with the Ethereum blockchain. It is a bridge that allows you to manage your Ethereum wallet in your browser. MetaMask includes a secure identity vault/wallet, providing a user interface to manage your identities on different sites and sign blockchain transactions.</p>
+    <p>You can install the MetaMask add-on in Chrome, Firefox, Opera, and the new Brave browser.</p>
+    <p>MetaMask's mission is to make Ethereum as easy to use for as many people as possible.</p>
+    <p class="divider"></p>
+    <h3>Log into your Metamask account</h3>
+    <p>If you already have a MetaMask account please check the extension window to ensure you are currently signed into your account.</p>
+    <p class="divider"></p>
+    <h3>Learn how to setup your Metamask account</h3>
+    <div class="steps">
+      <p><span class="step-1">1</span>You need the MetaMask browser extension in order to use the Bankorus platform.</p>
+      <img src="assets/img/guide.svg" alt="" class="guide">
+      <a z-button class="btn-common" href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn?utm_source=chrome-ntp-icon" target="_blank">GET METAMASK</a>
+      <p style="display: flex;">
+        <span class="step-1 step-2">2</span>
+        <span>Select Your Browser option and add the MetaMask Extension. Once the extension is installed the MetaMask fox icon should now be located in the upper-right corner of your browser.</span>
+      </p>
+      <img src="assets/img/fox.svg" alt="" class="fox">
+      <p><span class="step-1">3</span>Once MetaMask is installed please create a new account (or enter your account seed).</p>
+      <p style="display: flex;">
+        <span class="step-1 step-4">4</span>
+        <span>Make sure you record your Recovery Seed Phrase somewhere safe! The Recovery Seed is a short string of words created specifically for your account, that you can use to restore your account and recover funds if this computer is lost or stolen. You are the only one who controls your Metamask account. This means that any tokens in a lost account cannot be recovered by Bankorus Network or Metamask. The only way to recover tokens in an account is by utilizing your Recovery Seed.</span>
+      </p>
+    </div>
+    <nz-modal nzWrapClassName="vertical-center-modal" [nzMask]="false" [(nzVisible)]="isVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <div class="modal-container">
+        <p class="success" *ngIf="isSuccess"></p>
+        <p class="failed" *ngIf="isFailed"></p>
+        <p class="loading" *ngIf="isLoading"></p>
+        <p class="note-modal" *ngIf="isSuccess">Great, STO Details Configured Successfully!</p>
+        <p class="note-modal" *ngIf="isFailed">Oops… Something went wrong. Please try later.</p>
+        <p class="note-modal" *ngIf="isLoading">Please do not leave the current page, you may need to wait for a few minutes...</p>
+      </div>
+    </nz-modal>
+  </div>
+</div>
+
+

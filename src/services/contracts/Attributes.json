@@ -1,0 +1,306 @@
+{
+  "contractName": "Attributes",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "REGISTRY_TYPE",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "VERIFICATION_TYPE",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b5060f78061001f6000396000f30060806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416632f6968c08114604d578063d916d4e2146071575b600080fd5b348015605857600080fd5b50605f6083565b60408051918252519081900360200190f35b348015607c57600080fd5b50605f60a7565b7f72656769737472792e747970650000000000000000000000000000000000000081565b7f766572696669636174696f6e2e74797065000000000000000000000000000000815600a165627a7a723058202af6c17128eed69fd1b27fa5ab77b6f875fe442176c19f239570ffa0262d9fa50029",
+  "deployedBytecode": "0x60806040526004361060485763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416632f6968c08114604d578063d916d4e2146071575b600080fd5b348015605857600080fd5b50605f6083565b60408051918252519081900360200190f35b348015607c57600080fd5b50605f60a7565b7f72656769737472792e747970650000000000000000000000000000000000000081565b7f766572696669636174696f6e2e74797065000000000000000000000000000000815600a165627a7a723058202af6c17128eed69fd1b27fa5ab77b6f875fe442176c19f239570ffa0262d9fa50029",
+  "sourceMap": "234:333:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;234:333:1;;;;;;;",
+  "deployedSourceMap": "234:333:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;343:55;;8:9:-1;5:2;;;30:1;27;20:12;5:2;343:55:1;;;;;;;;;;;;;;;;;;;;456:63;;8:9:-1;5:2;;;30:1;27;20:12;5:2;456:63:1;;;;343:55;;;:::o;456:63::-;;;:::o",
+  "source": "pragma solidity ^0.4.24;\n/*\n * @title: Attributes\n * Attributes supposed for Registry to define the Registry type\n * and describe processes of verification used by this registry.\n * Created on 2018-04-26, by Blockchain Labs, NZ\n */\n\n\ncontract Attributes {\n  /*\n   * @dev: Every registry should have these specific registry attributes:\n   */\n  bytes32 public constant REGISTRY_TYPE = \"registry.type\";            // e.g.: Exchange, Government, Portal, ...\n  bytes32 public constant VERIFICATION_TYPE = \"verification.type\";    // e.g.: KYC, Deposit, MinimumAmount, ...\n}",
+  "sourcePath": "/Users/pengliu/work/bankorus_sto/VerifiedToken-master/contracts/Attributes.sol",
+  "ast": {
+    "absolutePath": "/Users/pengliu/work/bankorus_sto/VerifiedToken-master/contracts/Attributes.sol",
+    "exportedSymbols": {
+      "Attributes": [
+        56
+      ]
+    },
+    "id": 57,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 49,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 56,
+        "linearizedBaseContracts": [
+          56
+        ],
+        "name": "Attributes",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 52,
+            "name": "REGISTRY_TYPE",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "343:55:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 50,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "343:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "72656769737472792e74797065",
+              "id": 51,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "383:15:1",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_c488863c8bd800446f15123aebdc527a5b639b82b6e2beaf267e975cf619eae3",
+                "typeString": "literal_string \"registry.type\""
+              },
+              "value": "registry.type"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 55,
+            "name": "VERIFICATION_TYPE",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "456:63:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 53,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "456:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "766572696669636174696f6e2e74797065",
+              "id": 54,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "500:19:1",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_215f704cef910f784543a05416eed4220bdc9099083ed6574482ae06abbbb387",
+                "typeString": "literal_string \"verification.type\""
+              },
+              "value": "verification.type"
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 57,
+        "src": "234:333:1"
+      }
+    ],
+    "src": "0:567:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/pengliu/work/bankorus_sto/VerifiedToken-master/contracts/Attributes.sol",
+    "exportedSymbols": {
+      "Attributes": [
+        56
+      ]
+    },
+    "id": 57,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 49,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 56,
+        "linearizedBaseContracts": [
+          56
+        ],
+        "name": "Attributes",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 52,
+            "name": "REGISTRY_TYPE",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "343:55:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 50,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "343:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "72656769737472792e74797065",
+              "id": 51,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "383:15:1",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_c488863c8bd800446f15123aebdc527a5b639b82b6e2beaf267e975cf619eae3",
+                "typeString": "literal_string \"registry.type\""
+              },
+              "value": "registry.type"
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": true,
+            "id": 55,
+            "name": "VERIFICATION_TYPE",
+            "nodeType": "VariableDeclaration",
+            "scope": 56,
+            "src": "456:63:1",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 53,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "456:7:1",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "766572696669636174696f6e2e74797065",
+              "id": 54,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "string",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "500:19:1",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_stringliteral_215f704cef910f784543a05416eed4220bdc9099083ed6574482ae06abbbb387",
+                "typeString": "literal_string \"verification.type\""
+              },
+              "value": "verification.type"
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 57,
+        "src": "234:333:1"
+      }
+    ],
+    "src": "0:567:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.0",
+  "updatedAt": "2019-01-08T06:37:39.675Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -1,0 +1,8 @@
+@import "../../global-style/variables";
+@import "../../global-style/mixins";
+
+@include wrap-1();
+@include policy();
+.container-1{
+  padding-top:60px!important;
+}

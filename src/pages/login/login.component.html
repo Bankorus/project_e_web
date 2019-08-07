@@ -1,0 +1,27 @@
+<div class="wrap-1">
+  <div class="container-1">
+    <h1>Log in</h1>
+    <form nz-form [formGroup]="loginForm" (submit)="login()">
+      <nz-form-item class="login-item">
+        <nz-form-control  >
+          <input nz-input (keyup)="emailValidate()" name="email" formControlName="email" placeholder="Email" class="input-email" type="text">
+          <div class="invalid-feedback">
+            {{ loginFormError.email }}
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item class="password">
+        <nz-form-control  >
+          <input nz-input (keyup)="passwordValidate()" name="password" formControlName="password" placeholder="Password" class="input-password" type="password">
+          <div class="invalid-feedback">
+            {{ loginFormError.password }}
+          </div>
+        </nz-form-control>
+      </nz-form-item>
+      <p class="forget"><a routerLink="/recover">Forgot Password?</a></p>
+      <button nz-button class="login-form-button btn-common" [ngClass]="{'cannot' : notClickable}" [disabled]="submitDisabled">LOG IN</button>
+      <p class="already">Don't have an account?<a routerLink="/register">SIGN UP</a></p>
+    </form>
+  </div>
+</div>
+

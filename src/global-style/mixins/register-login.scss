@@ -1,0 +1,54 @@
+@mixin register-login-container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 110px;
+  margin-bottom:110px;
+  @media (min-width: $screen-desktop-min) {
+    width: $dialog-width;
+    color: #000;
+  }
+
+}
+
+@mixin register-login-card {
+  font-size: 14px;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  background-color: #fff;
+  font-weight:bold;
+  @media (min-width: $screen-desktop-min) {
+    background-color: $background-color-primary;
+  }
+}
+
+@mixin login-card-title {
+  margin:40px auto;
+  font-size: 24px;
+  text-align: left;
+  width:300px;
+  font-weight:bold;
+
+  .card-subtitle {
+    margin-top: 20px;
+    @include font-family-normal();
+    font-size: 16px;
+  }
+}
+
+@mixin register-login-card-block {
+  font-size: 14px;
+  position: relative;
+  width: 300px;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  box-shadow: none;
+}
+
+@mixin register-login-button {
+  @include dialog-button();
+  margin-top: 40px;
+  width: 100%;
+}

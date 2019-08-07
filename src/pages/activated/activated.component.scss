@@ -1,0 +1,16 @@
+@import "../../global-style/variables";
+@import "../../global-style/mixins";
+
+@include wrap-1();
+.wrap-1{
+  .container-1{
+    width:640px;
+  }
+  .btn-common{
+    @include btn-common();
+    margin-top:40px;
+  }
+  .btn-common:hover{
+    opacity: 0.84;
+  }
+}

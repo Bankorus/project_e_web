@@ -1,0 +1,252 @@
+<div class="wrap-1">
+  <div class="container-1">
+    <p class="progress"></p>
+    <p class="progress-note"><span>Issue Security Token</span><span>Whitelist Investors</span></p>
+    <h1>Issue Security Token</h1>
+    <div>
+      <form nz-form [nzLayout]="'inline'" [formGroup]="issueForm">
+
+        <p class="question">
+          <span class="required">*</span> Token Symbol
+          <span class="issue" *ngIf="!isSymbolsActive" (click)="createSymbolNotification(template)"></span>
+          <span class="issueActive" *ngIf="isSymbolsActive" (click)="closeSymbolNotification()"></span>
+        </p>
+        <nz-form-item>
+          <nz-form-control>
+            <input
+              nz-input placeholder="3-10 Character limit (Example: BKT-PRO) "
+              class="symbol" formControlName="symbol" [(ngModel)]="symbol" (keyup)="symbolValidate()">
+            <div class="invalid-feedback">
+              {{ issueFormError.symbol }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+
+        <p class="question"><span class="required">*</span> Token Name</p>
+        <nz-form-item>
+          <nz-form-control>
+            <input nz-input placeholder="Token Name (Example: Bankorus-Pro) " class="name" formControlName="name" (keyup)="nameValidate()">
+            <div class="invalid-feedback">
+              {{ issueFormError.name }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+
+        <p class="question">
+          <span class="required">*</span> Regulation Offering
+          <span class="issue" *ngIf="!isRegulationsActive" (click)="createRegulationNotification(notification)"></span>
+          <span class="issueActive" *ngIf="isRegulationsActive" (click)="closeRegulationNotification()"></span>
+        </p>
+        <div class="select-container">
+          <nz-select
+            nzPlaceHolder="Choose the regulation type for your token" [(ngModel)]="regulation"
+            formControlName="regulation" (nzOpenChange)="transform('regulation')" (ngModelChange)="ValidateField('regulation');changeEndDate()">
+            <nz-option nzCustomContent nzValue="Reg S" nzLabel="Reg S">
+              <ul>
+                <li>Reg S</li>
+                <li>Lockup period: 40 days generally; at least 12 months for Americans</li>
+                <li>Financing limit: no limits</li>
+              </ul>
+            </nz-option>
+            <nz-option nzCustomContent nzValue="Rule 504 of Reg D" nzLabel="Rule 504 of Reg D">
+              <ul>
+                <li>Rule 504 of Reg D</li>
+                <li>Lockup period: at least 12 months</li>
+                <li>Financing limit: $5 million within 12 months</li>
+              </ul>
+            </nz-option>
+            <nz-option nzCustomContent nzValue="Rule 506(b) of Reg D" nzLabel="Rule 506(b) of Reg D">
+              <ul>
+                <li>Rule 506(b) of Reg D</li>
+                <li>Lockup period: at least 12 months</li>
+                <li>Financing limit: no limits</li>
+              </ul>
+            </nz-option>
+            <nz-option nzCustomContent nzValue="Rule 506(c) of Reg D" nzLabel="Rule 506(c) of Reg D">
+              <ul>
+                <li>Rule 506(c) of Reg D</li>
+                <li>Lockup period: at least 12 months</li>
+                <li>Financing limit: no limits</li>
+              </ul>
+            </nz-option>
+          </nz-select>
+          <span class="down-icon" [ngClass]="{'transform': isRegulationTransform }"></span>
+        </div>
+
+        <div class="date-container">
+          <div class="start-date">
+            <p class="question"><span class="required">*</span> Date of Token Issuing</p>
+            <nz-date-picker
+              [nzDisabledDate]="disabledDate"
+              class="start" (ngModelChange)="onChange(regulationControl.value)"
+              nzPlaceHolder="At least after 24 hours"
+              formControlName="startDate">
+            </nz-date-picker>
+          </div>
+          <div class="end-date">
+            <p class="question end-date"><span class="required">*</span> First Tradable Date</p>
+            <nz-form-item>
+              <nz-form-control>
+                <input
+                  nz-input placeholder="DD/MM/YYYY (Based on the regulation type)"
+                  class="end" [(ngModel)]="endDate" formControlName="endDate" readonly>
+              </nz-form-control>
+            </nz-form-item>
+            <!--<p></p>-->
+          </div>
+        </div>
+
+        <div class="raise-amount">
+          <div class="raise-container">
+            <p class="question"><span class="required">*</span> Plan to Raise in</p>
+            <div class="select-container">
+              <nz-select nzPlaceHolder="Choose one" [(ngModel)]="raise" formControlName="raise" (nzOpenChange)="transform('raise')" (ngModelChange)="ValidateField('raise');changeCoin()">
+                <nz-option nzValue="USD" nzLabel="USD"></nz-option>
+                <nz-option nzValue="EUR" nzLabel="EUR"></nz-option>
+              </nz-select>
+              <span class="down-icon" [ngClass]="{'transform': isRaiseTransform }"></span>
+            </div>
+          </div>
+          <div class="amount-container">
+            <p class="question"><span class="required">*</span> Amount of Funding</p>
+            <nz-form-item>
+              <nz-form-control>
+                <input [(ngModel)]="amount" nz-input placeholder="Input the amount" class="amount" formControlName="amount" (keyup)="amountOnlyNumber();amountValidate()">
+                <div class="invalid-feedback">
+                  {{ amountError }}
+                </div>
+              </nz-form-control>
+            </nz-form-item>
+            <span class="coin">{{ coin }}</span>
+          </div>
+        </div>
+
+        <p class="question">
+          <span class="required">*</span> Hard cap in Tokens
+        </p>
+        <nz-form-item class="token-container">
+          <nz-form-control>
+            <input nz-input placeholder="suggest greater than $1 million" class="cap" formControlName="cap" [(ngModel)]="cap" (keyup)="capOnlyNumber();capValidate()">
+            <span class="token" *ngIf="hasNumber">1 TOKEN ≈ {{number}} {{coin}}</span>
+            <div class="invalid-feedback">
+              {{ capError }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+        <br>
+        <nz-form-item class="terms">
+          <nz-form-control>
+            <label>
+              <input type="checkbox" name="agree" formControlName="agree" (change)="agreeCheckChange()" />
+              I accept the <a routerLink="/service" target="_blank">Terms and Conditions</a>.
+            </label>
+          </nz-form-control>
+        </nz-form-item>
+        <br>
+        <button type="button" nz-button class="login-form-button btn-common" [ngClass]="{'cannot' : notClickable}" [disabled]="submitDisabled" (click)="lanchModal()">LAUNCH</button>
+      </form>
+    </div>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" [(nzVisible)]="isVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <p class="warning"></p>
+      <p class="note">Notice - your security token is prepared to launch</p>
+      <p class="explain">Please verify that all the information you have provided below is correct. Once your security token is issued, it can not be changed.</p>
+      <div class="infomation">
+        <p class="title">Capped STO raised in {{ coin }}</p>
+        <p class="amount">Total Token Amount:</p>
+        <p class="amount-number">{{amount}}</p>
+        <div style="display:flex;">
+          <div style="flex:0 1 180px;">
+            <p class="amount">Token Name:</p>
+            <p class="amount-number">{{nameControl.value}}</p>
+          </div>
+          <div>
+            <p class="amount">Token Symbol:</p>
+            <p class="amount-number">{{symbol}}</p>
+          </div>
+        </div>
+        <p class="amount">Lock Up Period:</p>
+        <p class="amount-number">UTC/GMT {{ startDateControl.value ? (startDateControl.value | customDate) : '' }} - {{ endDateControl.value ? (endDateControl.value | customDate ) : '' }}</p>
+      </div>
+      <p style="text-align: right;margin:0;">
+        <a href="javascript:;" class="close" (click)="closeModal()">CLOSE</a>
+        <a href="javascript:;" class="launchBtn" (click)="LaunchTo()">LAUNCH</a>
+      </p>
+    </nz-modal>
+
+    <nz-modal nzWrapClassName="vertical-center-modal" [nzMask]="false" [(nzVisible)]="isStatusVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <div class="modal-container">
+        <p class="success" *ngIf="isSuccess"></p>
+        <p class="failed" *ngIf="isFailed"></p>
+        <p class="loading" *ngIf="isLoading"></p>
+        <p class="note-modal" *ngIf="isSuccess">Great, STO Details Configured Successfully</p>
+        <p class="note-modal" *ngIf="isFailed">{{ failedError }}</p>
+        <p class="note-modal" *ngIf="isLoading">Please do not leave the current page, you may need to wait for a few minutes...</p>
+      </div>
+    </nz-modal>
+
+  </div>
+</div>
+<ng-template #template >
+  <div class="ant-notification-notice-content">
+    <div class="ant-notification-notice-with-icon">
+      <span class="issueActive"></span>
+      <span class="removeNotification" (click)="removeSymbolNotification()"></span>
+      <div class="ant-notification-notice-message">Token Symbol</div>
+      <div class="ant-notification-notice-description token-symbol-description">
+        A Token Symbol must be 3 to 10 characters long, once launched, the Token Symbol can not be changed. Please do not use the same Token Symbol of other well-known tokens; the platform does not allow for the use of repeated Token Symbols.
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #notification>
+  <div class="ant-notification-notice-content">
+    <div class="ant-notification-notice-with-icon">
+      <span class="issueActive"></span>
+      <span class="removeNotification" (click)="removeRegNotification()"></span>
+      <div class="ant-notification-notice-message token-symbol-message">
+        <ul>
+          <li [ngClass]="{'active': regS}" (click)="changeReg('s')">Reg S</li>
+          <li [ngClass]="{'active': regD}" (click)="changeReg('d')">Reg D</li>
+        </ul>
+      </div>
+      <div class="ant-notification-notice-description token-symbol-description-regD" *ngIf="regS">
+        <p>Lock up period:</p>
+        <p class="internal">40 days generally; at least 12 months for Americans</p>
+        <p>Financing limit: </p>
+        <p class="internal">no limit</p>
+        <p>General solicitation or advertising to market the securities is not permitted</p>
+        <a routerLink="/reg" target="_blank">Learn more</a>
+      </div>
+      <div class="ant-notification-notice-description token-symbol-description-rule" *ngIf="regD">
+        <ul>
+          <li [ngClass]="{'active': regD504}" (click)="changeRegRule('regD504')">Rule 504</li>
+          <li [ngClass]="{'active': regD506b}" (click)="changeRegRule('regD506b')">Rule 506(b)</li>
+          <li [ngClass]="{'active': regD506c}" (click)="changeRegRule('regD506c')">Rule 506(c)</li>
+        </ul>
+        <div class="regD504 token-symbol-description-regD" *ngIf="regD504">
+          <p>Lock up period:</p>
+          <p class="internal">at least 12 months</p>
+          <p>Financing limit: </p>
+          <p class="internal">$5 million within 12 months</p>
+          <p>General solicitation or advertising to market the securities is not permitted</p>
+          <a routerLink="/reg" target="_blank">Learn more</a>
+        </div>
+        <div class="regD506b token-symbol-description-regD" *ngIf="regD506b">
+          <p>Lock up period:</p>
+          <p class="internal">at least 12 months</p>
+          <p>Non-accredited investors limit: </p>
+          <p class="internal">no more than 35 investors</p>
+          <p>General solicitation or advertising to market the securities is not permitted</p>
+          <a routerLink="/reg" target="_blank">Learn more</a>
+        </div>
+        <div class="regD506c token-symbol-description-regD" *ngIf="regD506c">
+          <p>Lock up period:</p>
+          <p class="internal">at least 12 months</p>
+          <a routerLink="/reg" target="_blank">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

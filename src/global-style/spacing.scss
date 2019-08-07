@@ -1,0 +1,32 @@
+@mixin margin-generator($name, $direction, $num) {
+  @for $i from 1 through $num {
+    .#{$name}-#{$i} {
+      margin-#{$direction}: #{$i}rem;
+    }
+  }
+}
+
+@include margin-generator(mt, top, 10);
+@include margin-generator(mb, bottom, 10);
+
+@mixin padding-generator($name, $direction, $num) {
+  @for $i from 1 through $num {
+    .#{$name}-#{$i} {
+      padding-#{$direction}: #{$i}rem;
+    }
+  }
+}
+
+@include padding-generator(pt, top, 10);
+@include padding-generator(pb, bottom, 10);
+@include padding-generator(pl, left, 10);
+@include padding-generator(pr, right, 10);
+
+@mixin phone-margin-generator($name, $direction, $num) {
+  @include phone-screen {
+    @include margin-generator($name, $direction, $num);
+  }
+}
+
+@include phone-margin-generator(mt-phone, top, 10);
+@include phone-margin-generator(mb-phone, bottom, 10);

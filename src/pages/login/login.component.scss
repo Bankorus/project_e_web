@@ -1,0 +1,70 @@
+@import "../../global-style/variables";
+@import "../../global-style/mixins";
+
+@include wrap-1();
+.wrap-1{
+  .container-1{
+    width:640px;
+  }
+  .login-item{
+    margin-bottom:10px!important;
+  }
+  h1{
+    margin-bottom:40px!important;
+  }
+  .input-email{
+    @include input-long();
+    margin-bottom:10px;
+  }
+  .input-password{
+    @include input-long();
+  }
+  input:focus{
+    border-right:0!important;
+    border-bottom-color:#1332C3;
+  }
+  input:hover{
+    border-right:0!important;
+  }
+  .password{
+    margin-bottom:5px!important;
+  }
+  .forget{
+    text-align: right;
+    margin-bottom:16px;
+    a{
+      font-size: 16px;
+      color:$link-color;
+      font-weight: 500;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+  }
+  .btn-common{
+    @include btn-common();
+    margin:0 0 20px 0;
+  }
+  .btn-common:hover{
+    opacity: 0.84;
+  }
+  .already{
+    color:$text-color-gray;
+    font-size: 16px;
+    margin:0;
+    a{
+      color:$link-color;
+      margin-left:10px;
+      font-weight: 500;
+    }
+    a:hover{
+      text-decoration: underline;
+    }
+  }
+}
+.cannot{
+  opacity: 0.4;
+}
+.invalid-feedback {
+  @include form-invalid-feedback();
+}

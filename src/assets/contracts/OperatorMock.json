@@ -1,0 +1,541 @@
+{
+  "contractName": "OperatorMock",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_operator",
+          "type": "address"
+        },
+        {
+          "name": "_status",
+          "type": "bool"
+        }
+      ],
+      "name": "updateOperator",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "isOperator",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "operator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "status",
+          "type": "bool"
+        },
+        {
+          "indexed": false,
+          "name": "updatedAt",
+          "type": "uint256"
+        }
+      ],
+      "name": "OperatorStatusUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipRenounced",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "testOnlyOperator",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405260008054600160a060020a0319163317905561034f806100256000396000f3006080604052600436106100775763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416636d44a3b2811461007c5780636d70f7ae146100a4578063715018a6146100d95780638da5cb5b146100ee578063da1ce9641461011f578063f2fde38b14610134575b600080fd5b34801561008857600080fd5b506100a2600160a060020a03600435166024351515610155565b005b3480156100b057600080fd5b506100c5600160a060020a03600435166101ce565b604080519115158252519081900360200190f35b3480156100e557600080fd5b506100a26101ec565b3480156100fa57600080fd5b50610103610258565b60408051600160a060020a039092168252519081900360200190f35b34801561012b57600080fd5b506100c5610267565b34801561014057600080fd5b506100a2600160a060020a0360043516610283565b600054600160a060020a0316331461016c57600080fd5b600160a060020a038216600081815260016020908152604091829020805460ff1916851515908117909155825142815292519093927f1490bf5846abf8a5f02ba05428324b614a1be3b07a78f2feb69e0f7841aea90592908290030190a35050565b600160a060020a031660009081526001602052604090205460ff1690565b600054600160a060020a0316331461020357600080fd5b60008054604051600160a060020a03909116917ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482091a26000805473ffffffffffffffffffffffffffffffffffffffff19169055565b600054600160a060020a031681565b6000610272336101ce565b151561027d57600080fd5b50600190565b600054600160a060020a0316331461029a57600080fd5b6102a3816102a6565b50565b600160a060020a03811615156102bb57600080fd5b60008054604051600160a060020a03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a36000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a03929092169190911790555600a165627a7a72305820f5a890a8fe18e5d465d3c15878e2f1285b9038c3336ce616e5968f71626d58580029",
+  "deployedBytecode": "0x6080604052600436106100775763ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416636d44a3b2811461007c5780636d70f7ae146100a4578063715018a6146100d95780638da5cb5b146100ee578063da1ce9641461011f578063f2fde38b14610134575b600080fd5b34801561008857600080fd5b506100a2600160a060020a03600435166024351515610155565b005b3480156100b057600080fd5b506100c5600160a060020a03600435166101ce565b604080519115158252519081900360200190f35b3480156100e557600080fd5b506100a26101ec565b3480156100fa57600080fd5b50610103610258565b60408051600160a060020a039092168252519081900360200190f35b34801561012b57600080fd5b506100c5610267565b34801561014057600080fd5b506100a2600160a060020a0360043516610283565b600054600160a060020a0316331461016c57600080fd5b600160a060020a038216600081815260016020908152604091829020805460ff1916851515908117909155825142815292519093927f1490bf5846abf8a5f02ba05428324b614a1be3b07a78f2feb69e0f7841aea90592908290030190a35050565b600160a060020a031660009081526001602052604090205460ff1690565b600054600160a060020a0316331461020357600080fd5b60008054604051600160a060020a03909116917ff8df31144d9c2f0f6b59d69b8b98abd5459d07f2742c4df920b25aae33c6482091a26000805473ffffffffffffffffffffffffffffffffffffffff19169055565b600054600160a060020a031681565b6000610272336101ce565b151561027d57600080fd5b50600190565b600054600160a060020a0316331461029a57600080fd5b6102a3816102a6565b50565b600160a060020a03811615156102bb57600080fd5b60008054604051600160a060020a03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a36000805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a03929092169190911790555600a165627a7a72305820f5a890a8fe18e5d465d3c15878e2f1285b9038c3336ce616e5968f71626d58580029",
+  "sourceMap": "55:137:12:-;;;567:5:17;:18;;-1:-1:-1;;;;;;567:18:17;575:10;567:18;;;55:137:12;;;;;;",
+  "deployedSourceMap": "55:137:12:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;609:172:6;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;609:172:6;-1:-1:-1;;;;;609:172:6;;;;;;;;;;;868:102;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;868:102:6;-1:-1:-1;;;;;868:102:6;;;;;;;;;;;;;;;;;;;;;;;1001:111:17;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1001:111:17;;;;238:20;;8:9:-1;5:2;;;30:1;27;20:12;5:2;238:20:17;;;;;;;;-1:-1:-1;;;;;238:20:17;;;;;;;;;;;;;;95:95:12;;8:9:-1;5:2;;;30:1;27;20:12;5:2;95:95:12;;;;1274:103:17;;8:9:-1;5:2;;;30:1;27;20:12;5:2;-1:-1;1274:103:17;-1:-1:-1;;;;;1274:103:17;;;;;609:172:6;719:5:17;;-1:-1:-1;;;;;719:5:17;705:10;:19;697:28;;;;;;-1:-1:-1;;;;;689:20:6;;;;;;:9;:20;;;;;;;;;:30;;-1:-1:-1;;689:30:6;;;;;;;;;;730:46;;772:3;730:46;;;;689:30;;:20;730:46;;;;;;;;;609:172;;:::o;868:102::-;-1:-1:-1;;;;;946:19:6;927:4;946:19;;;:9;:19;;;;;;;;;868:102::o;1001:111:17:-;719:5;;-1:-1:-1;;;;;719:5:17;705:10;:19;697:28;;;;;;1077:5;;;1058:25;;-1:-1:-1;;;;;1077:5:17;;;;1058:25;;;1105:1;1089:18;;-1:-1:-1;;1089:18:17;;;1001:111::o;238:20::-;;;-1:-1:-1;;;;;238:20:17;;:::o;95:95:12:-;156:4;508:22:6;519:10;508;:22::i;:::-;500:31;;;;;;;;-1:-1:-1;179:4:12;95:95;:::o;1274:103:17:-;719:5;;-1:-1:-1;;;;;719:5:17;705:10;:19;697:28;;;;;;1343:29;1362:9;1343:18;:29::i;:::-;1274:103;:::o;1512:171::-;-1:-1:-1;;;;;1582:23:17;;;;1574:32;;;;;;1638:5;;;1617:38;;-1:-1:-1;;;;;1617:38:17;;;;1638:5;;;1617:38;;;1661:5;:17;;-1:-1:-1;;1661:17:17;-1:-1:-1;;;;;1661:17:17;;;;;;;;;;1512:171::o",
+  "source": "pragma solidity ^0.4.24;\n\nimport './../Operator.sol';\n\ncontract OperatorMock is Operator {\n    function testOnlyOperator() public view onlyOperator returns(bool) {\n        return true;\n    }\n}\n",
+  "sourcePath": "/Users/pengliu/work/bankorus_sto/VerifiedToken-master/contracts/mocks/OperatorMock.sol",
+  "ast": {
+    "absolutePath": "/Users/pengliu/work/bankorus_sto/VerifiedToken-master/contracts/mocks/OperatorMock.sol",
+    "exportedSymbols": {
+      "OperatorMock": [
+        1766
+      ]
+    },
+    "id": 1767,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1752,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:12"
+      },
+      {
+        "absolutePath": "/Users/pengliu/work/bankorus_sto/VerifiedToken-master/contracts/Operator.sol",
+        "file": "./../Operator.sol",
+        "id": 1753,
+        "nodeType": "ImportDirective",
+        "scope": 1767,
+        "sourceUnit": 1133,
+        "src": "26:27:12",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1754,
+              "name": "Operator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1132,
+              "src": "80:8:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Operator_$1132",
+                "typeString": "contract Operator"
+              }
+            },
+            "id": 1755,
+            "nodeType": "InheritanceSpecifier",
+            "src": "80:8:12"
+          }
+        ],
+        "contractDependencies": [
+          1132,
+          2054
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1766,
+        "linearizedBaseContracts": [
+          1766,
+          1132,
+          2054
+        ],
+        "name": "OperatorMock",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1764,
+              "nodeType": "Block",
+              "src": "162:28:12",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 1762,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "179:4:12",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 1761,
+                  "id": 1763,
+                  "nodeType": "Return",
+                  "src": "172:11:12"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1765,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 1758,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1757,
+                  "name": "onlyOperator",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1097,
+                  "src": "135:12:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "135:12:12"
+              }
+            ],
+            "name": "testOnlyOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1756,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "120:2:12"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1761,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1760,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1765,
+                  "src": "156:4:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1759,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "156:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "155:6:12"
+            },
+            "scope": 1766,
+            "src": "95:95:12",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1767,
+        "src": "55:137:12"
+      }
+    ],
+    "src": "0:193:12"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/pengliu/work/bankorus_sto/VerifiedToken-master/contracts/mocks/OperatorMock.sol",
+    "exportedSymbols": {
+      "OperatorMock": [
+        1766
+      ]
+    },
+    "id": 1767,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1752,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:12"
+      },
+      {
+        "absolutePath": "/Users/pengliu/work/bankorus_sto/VerifiedToken-master/contracts/Operator.sol",
+        "file": "./../Operator.sol",
+        "id": 1753,
+        "nodeType": "ImportDirective",
+        "scope": 1767,
+        "sourceUnit": 1133,
+        "src": "26:27:12",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 1754,
+              "name": "Operator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1132,
+              "src": "80:8:12",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Operator_$1132",
+                "typeString": "contract Operator"
+              }
+            },
+            "id": 1755,
+            "nodeType": "InheritanceSpecifier",
+            "src": "80:8:12"
+          }
+        ],
+        "contractDependencies": [
+          1132,
+          2054
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1766,
+        "linearizedBaseContracts": [
+          1766,
+          1132,
+          2054
+        ],
+        "name": "OperatorMock",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1764,
+              "nodeType": "Block",
+              "src": "162:28:12",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "hexValue": "74727565",
+                    "id": 1762,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "179:4:12",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "true"
+                  },
+                  "functionReturnParameters": 1761,
+                  "id": 1763,
+                  "nodeType": "Return",
+                  "src": "172:11:12"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 1765,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 1758,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 1757,
+                  "name": "onlyOperator",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 1097,
+                  "src": "135:12:12",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "135:12:12"
+              }
+            ],
+            "name": "testOnlyOperator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1756,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "120:2:12"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 1761,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1760,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1765,
+                  "src": "156:4:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 1759,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "156:4:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "155:6:12"
+            },
+            "scope": 1766,
+            "src": "95:95:12",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 1767,
+        "src": "55:137:12"
+      }
+    ],
+    "src": "0:193:12"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.0",
+  "updatedAt": "2019-01-08T06:37:39.683Z",
+  "devdoc": {
+    "methods": {
+      "renounceOwnership()": {
+        "details": "Allows the current owner to relinquish control of the contract."
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "_newOwner": "The address to transfer ownership to."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "renounceOwnership()": {
+        "notice": "Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+      }
+    }
+  }
+}

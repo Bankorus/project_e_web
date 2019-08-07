@@ -1,0 +1,180 @@
+@import "../../global-style/variables";
+@import "../../global-style/mixins";
+
+@include modal();
+.register-container{
+  width: 1024px;
+  height:100%;
+  margin:0 auto;
+  background-color: #fff;
+  .ques{
+    font-weight:500;
+  }
+  .content{
+    padding:80px 0 120px 0;
+    h1{
+      font-size: 60px;
+      color:#000;
+      height:60px;
+      line-height:60px;
+      margin:0;
+    }
+    .note{
+      font-size: 16px;
+      color:$text-color-gray;
+      width:620px;
+      line-height: 20px;
+      margin:8px 0 30px 0;
+      font-weight: normal;
+    }
+    .create-account{
+      nz-form-item span{
+        color:$input-placeholder-color;
+      }
+      .input-first{
+        @include input-short();
+      }
+      .input-last{
+        @include input-short();
+      }
+      .email{
+        @include input-short();
+        margin-top:30px;
+      }
+      .code-item{
+        margin-right:20px;
+      }
+      .code{
+        @include input-short();
+        margin-top:30px;
+        width:80px;
+        margin-right:8px;
+      }
+      .phone{
+        @include input-short();
+        width:222px;
+        margin-top:30px;
+      }
+      input:focus{
+        border-right:0!important;
+        border-bottom-color:#1332C3;
+      }
+      input:hover{
+        border-right:0!important;
+      }
+      .password{
+        @include input-long();
+        margin-top:30px;
+      }
+      .confirmPassword{
+        @include input-long();
+        margin-top:30px;
+      }
+      .hear{
+        @include input-long();
+      }
+      .policy{
+        font-size: 16px;
+        color:$text-color-gray;
+        margin-top:26px;
+        .agree{
+          color:$agree-text-color;
+        }
+        span{
+          //@include font-family-thick();
+        }
+        a{
+          font-family: "DIN", Helvetica, Arial, serif;
+          color:$link-color;
+        }
+        a:hover{
+          text-decoration: underline;
+        }
+      }
+      .service{
+        font-size: 16px;
+        color:$text-color-gray;
+        .agree{
+          color:$agree-text-color;
+        }
+        span{
+          //@include font-family-thick();
+        }
+        a{
+          font-family: "DIN", Helvetica, Arial, serif;
+          color:$link-color;
+        }
+        a:hover{
+          text-decoration: underline;
+        }
+      }
+      .btn-common{
+        @include btn-common();
+        margin-top:14px;
+        margin-bottom:14px;
+      }
+      .btn-common:hover{
+        //opacity: 0.84;
+      }
+      p{
+        color:$question-text-color;
+        font-size: 16px;
+        height:24px;
+        line-height: 24px;
+        margin:18px 0 0 0;
+        //@include font-family-thick();
+      }
+      nz-dropdown{
+        @include dropdown-long();
+        a{
+          color:$input-placeholder-color;
+        }
+        .anticon.anticon-down{
+          color:$question-text-color;
+          float:right;
+          margin-top:20px;
+          font-size: 14px;
+        }
+      }
+      .already{
+        color:$text-color-gray;
+        font-size: 16px;
+        margin:0;
+        a{
+          color:$link-color;
+          margin-left:10px;
+          font-weight: 500;
+        }
+        a:hover{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+.email-img{
+  @include email-img();
+  margin-bottom:20px;
+}
+.note{
+  color:$modal-text;
+  font-size: 24px;
+  line-height: 28px;
+  margin-bottom:100px;
+  font-weight: 500;
+}
+.close{
+  text-decoration: none;
+  color:$link-color;
+  font-size: 20px;
+  margin-bottom:40px;
+}
+.invalid-feedback {
+  @include form-invalid-feedback();
+}
+.cannot{
+  opacity: 0.4;
+}
+.star{
+  color:#E01010;
+}

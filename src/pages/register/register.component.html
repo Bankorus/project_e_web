@@ -1,0 +1,114 @@
+<div class="register-container">
+  <div class="content">
+    <h1>Create an Account</h1>
+    <p class="note">You're one step closer to creating your security token!</p>
+    <div class="create-account">
+      <form nz-form [nzLayout]="'inline'" [formGroup]="regForm" (submit)="register()">
+        <nz-form-item style="margin-right:20px!important;">
+          <nz-form-control>
+            <input nz-input name="firstname" aria-describedby="firstname" (keyup)="firstNameValidate()" formControlName="firstname" placeholder="First name" class="input-first" type="text">
+            <div class="invalid-feedback">
+              {{ regFormError.firstname }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control  >
+            <input nz-input name="lastname" aria-describedby="lastname" (keyup)="lastNameValidate()" formControlName="lastname" placeholder="Last name" class="input-last" type="text">
+            <div class="invalid-feedback">
+              {{ regFormError.lastname }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+        <br>
+        <nz-form-item style="margin-right:20px!important;">
+          <nz-form-control>
+            <input nz-input (keyup)="emailValidate()" formControlName="email" placeholder="Email" class="email" type="email">
+            <div class="invalid-feedback">
+              {{ regFormError.email }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item class="code-item">
+          <nz-form-control  >
+            <input nz-input [ngModel]="" (keyup)="areaCodeValidate()" formControlName="code" placeholder="Area Code" class="code" type="text">
+            <div class="invalid-feedback" style="position:absolute;width:320px;">
+              {{ regFormError.code }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+          <nz-form-control  >
+            <input nz-input [ngModel]="" (keyup)="phoneValidate()" formControlName="phone" placeholder="Phone number" class="phone" type="text">
+            <!--<div class="invalid-feedback">-->
+              <!--{{ regFormError.phone }}-->
+            <!--</div>-->
+          </nz-form-control>
+        </nz-form-item>
+        <br>
+        <nz-form-item>
+          <nz-form-control  >
+            <input nz-input [ngModel]="" (keyup)="passwordValidate()" formControlName="password" placeholder="Set password (At least 8 characters; one uppercase letter; one lowercase letter)" class="password" type="password">
+            <div class="invalid-feedback">
+              {{ regFormError.password }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+        <br>
+        <nz-form-item>
+          <nz-form-control  >
+            <input nz-input [ngModel]="" (keyup)="rePasswordValidate()" formControlName="rePassword" placeholder="Confirm password" class="confirmPassword" type="password">
+            <div class="invalid-feedback">
+              {{ regFormError.rePassword }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+
+        <!--<p class="ques">How did you hear about us?</p>-->
+        <!--<nz-form-item>-->
+          <!--<nz-form-control  >-->
+            <!--<input nz-input [ngModel]="" (keyup)="hearAboutValidate()" formControlName="hear" placeholder="Please specify if referral source,individual,or event" class="hear" type="text">-->
+            <!--<div class="invalid-feedback">-->
+              <!--{{ regFormError.hear }}-->
+            <!--</div>-->
+          <!--</nz-form-control>-->
+        <!--</nz-form-item>-->
+        <br>
+
+        <nz-form-item class="policy">
+          <nz-form-control>
+            <label>
+              <input type="checkbox" name="policyCheck" formControlName="policyCheck" (change)="policyCheckChange()">
+              I agree to the Bankorus <a class="link-to-policy" routerLink="/policy" target="_blank">Privacy Policy</a>.
+            </label>
+            <div class="invalid-feedback">
+              {{ regFormError.policyCheck }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+        <br>
+        <nz-form-item class="service">
+          <nz-form-control>
+            <label>
+              <input type="checkbox" name="termsCheck" formControlName="termsCheck" (change)="termsCheckChange()">
+             I accept the <a routerLink="/service" target="_blank">Terms of Service</a>.
+            </label>
+            <div class="invalid-feedback">
+              {{ regFormError.termsCheck }}
+            </div>
+          </nz-form-control>
+        </nz-form-item>
+        <br>
+        <button nz-button class="login-form-button btn-common" [ngClass]="{'cannot' : notClickable}" [disabled]="submitDisabled">CREATE</button>
+        <p class="already">Already have an account? <a routerLink="/login">SIGN IN</a></p>
+      </form>
+    </div>
+    <nz-modal nzWrapClassName="vertical-center-modal" [(nzVisible)]="isVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <p class="email-img"></p>
+      <p class="note">We have sent a confirmation link to {{ emailControl.value }}. Please check your email to complete the registration.</p>
+      <p style="text-align: right;margin-bottom:0;"><a href="javascript:;" class="close" (click)="closeModal()">CLOSE</a></p>
+    </nz-modal>
+  </div>
+</div>
+
+

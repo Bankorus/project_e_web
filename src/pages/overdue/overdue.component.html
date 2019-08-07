@@ -1,0 +1,22 @@
+<div class="wrap-1">
+  <div class="container-1">
+    <h1>Sorry, the activation link is overdue...</h1>
+    <button nz-button class="login-form-button btn-common" (click)="showModal()">SEND ME AN ACTIVATION EMAIL</button>
+    <nz-modal nzWrapClassName="vertical-center-modal" [(nzVisible)]="isVisible" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <p class="email-img"></p>
+      <p class="note2">We have sent a confirmation link to {{email}}. Please check your email to complete the registration.</p>
+      <p class="resend">Didn't receive the email? <a href="javascript:;" (click)="resend()"> RESEND</a></p>
+      <p style="text-align: right;margin-bottom: 0;"><a href="javascript:;" class="close" (click)="closeModal()">CLOSE</a></p>
+    </nz-modal>
+    <nz-modal nzWrapClassName="vertical-center-modal" [(nzVisible)]="isSuccessVisible" [nzMask]="false" [(nzFooter)]="isnzFooter" [(nzClosable)]="isnzClose">
+      <div class="modal-container">
+        <p class="success" *ngIf="isSuccess"></p>
+        <p class="failed" *ngIf="!isSuccess"></p>
+        <p class="note-modal" *ngIf="isSuccess">Great, the email has been re-sent!</p>
+        <p class="note-modal" *ngIf="!isSuccess">Oops… Something went wrong. Please try again later.</p>
+      </div>
+    </nz-modal>
+  </div>
+</div>
+
+

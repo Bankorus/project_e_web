@@ -1,0 +1,18 @@
+@import "../../global-style/variables";
+@import "../../global-style/mixins";
+
+@include wrap-1();
+@include policy();
+.container-1{
+  padding-top:60px!important;
+}
+.right{
+  font-size: 16px;
+  line-height: 24px;
+  p{
+    margin:0!important;
+  }
+  .padding{
+    margin-bottom:30px!important;
+  }
+}
